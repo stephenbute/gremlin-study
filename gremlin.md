@@ -90,3 +90,8 @@ g.V().hasLabel("MyNews").out("refer").union(hasLabel("security"), hasLabel("fund
 
 //g.V().hasLabel("MyNews").has("title","网易有道递交招股书：丁磊持股30%上半年净亏1.68亿元").out("refer").out("issue").inE("hold").valueMap(true)
 
+//g.V().hasLabel("MyNews").out("refer").hasLabel("security").aggregate("sec").by("name_short").inE("hold").otherV().hasLabel("fund").has("time","latest").cap("sec")
+
+g.V().hasLabel("MyNews").out("refer").union(hasLabel("security"), hasLabel("fund").out("hold").hasLabel("security")).aggregate("sec").by("name_short").inE("hold").otherV().hasLabel("fund").has("time","latest").cap("sec");
+
+
